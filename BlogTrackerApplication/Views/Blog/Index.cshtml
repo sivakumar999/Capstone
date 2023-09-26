@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BlogTrackerApplication.Models.BlogInfo>
+
+@{
+    ViewData["Title"] = "List of Blogs";
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="text-center">
+    <h1>List of Blogs</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@item.Subject</h6>
+                        <p class="card-text">Date of Creation: @(item.DateOfCreation.HasValue ? item.DateOfCreation.Value.ToShortDateString() : "N/A")</p>
+                        <div class="bg-primary text-white p-2 mb-2">
+                            <a href="@item.BlogUrl" class="text-white">@item.BlogUrl</a>
+                        </div>
+                        <p class="card-text">Employee Email: @item.EmpEmailId</p>
+                        <a href="#" class="card-link">Edit</a>
+                        <a href="#" class="card-link">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
